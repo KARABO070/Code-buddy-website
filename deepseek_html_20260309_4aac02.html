@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Buddy · fun coding for kids 10+</title>
+  <!-- friendly font & playful vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- font awesome for little icons (buddy style) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fcf9f2;  /* warm, paper-like background */
+      color: #1e2f4e;
+      line-height: 1.5;
+    }
+
+    /* playful sticky navigation */
+    .navbar {
+      background-color: #ffffffd9;
+      backdrop-filter: blur(8px);
+      padding: 1rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 14px rgba(0, 20, 30, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 4px solid #ffb347;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-icon {
+      font-size: 2.2rem;
+      color: #2e7eb0;  /* calm blue */
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+      color: #1f4a6f;
+    }
+
+    .logo-text span {
+      color: #f08c2e;
+      font-weight: 600;
+      background: #ffe8cf;
+      padding: 0 6px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      margin-left: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1f4a6f;
+      transition: 0.2s;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #f5a623;
+      color: #c06b1a;
+    }
+
+    .btn-try {
+      background-color: #f5a623;
+      color: white !important;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      border-bottom: none !important;
+      box-shadow: 0 4px 0 #b15d1a;
+      transition: 0.1s ease;
+    }
+
+    .btn-try:hover {
+      background-color: #ffb541;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #b15d1a;
+      border-bottom: none !important;
+    }
+
+    /* main fun header */
+    .hero {
+      background: linear-gradient(145deg, #fff7e8 0%, #fff0da 100%);
+      padding: 2.5rem 2rem 3.5rem;
+      border-bottom: 6px dashed #f5b06d;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #153448;
+    }
+
+    .hero-text h1 i {
+      color: #f28b1c;
+      font-style: normal;
+      background: #fff1b8;
+      padding: 0 12px;
+      border-radius: 80px;
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #305f7a;
+    }
+
+    .buddy-badge {
+      background: white;
+      border-radius: 100px;
+      padding: 0.8rem 1.8rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 1.8rem;
+      box-shadow: 0 10px 0 #e3c9a5;
+      border: 3px solid #d98c3b;
+    }
+
+    .hero-avatar {
+      background: #a2d0f0;
+      border-radius: 50% 50% 30% 30%;
+      padding: 1.8rem 2.5rem 1rem 2.5rem;
+      border: 8px solid #ffc489;
+      box-shadow: 0 14px 0 #b37b48;
+    }
+
+    .hero-avatar i {
+      font-size: 7rem;
+      color: #fdf6ea;
+      text-shadow: 4px 4px 0 #c07d44;
+    }
+
+    /* features / how it works */
+    .features-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-title span {
+      background: #ffdb9d;
+      padding: 0 15px;
+      border-radius: 60px;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: white;
+      width: 250px;
+      padding: 2rem 1rem 1.5rem;
+      border-radius: 40px 40px 30px 30px;
+      box-shadow: 0 16px 0 #c4d6e6, 0 6px 20px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+      border: 2px solid #ffe3b7;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 0 #aec9df, 0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      color: #e1862b;
+      background: #fce2c1;
+      width: 100px;
+      height: 100px;
+      line-height: 1.3;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid white;
+      outline: 3px solid #feb258;
+    }
+
+    .feature-card h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #1f4a6f;
+    }
+
+    .feature-card p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #3e5770;
+    }
+
+    /* projects carousel (buddy showcase) */
+    .showcase {
+      background-color: #e5f2fa;
+      padding: 3.5rem 2rem;
+      border-top: 8px solid #9cc4e4;
+      border-bottom: 8px solid #9cc4e4;
+    }
+
+    .showcase h2 {
+      font-size: 2.8rem;
+      text-align: center;
+    }
+
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .project-item {
+      background: #1e2f4e;
+      color: white;
+      border-radius: 60px 60px 30px 30px;
+      width: 220px;
+      padding: 2rem 0.8rem 1.2rem;
+      border: 5px solid #fec57b;
+      box-shadow: 0 18px 0 #1a3346;
+      transition: 0.2s;
+    }
+
+    .project-item:hover {
+      transform: scale(1.02);
+      background: #203e5a;
+    }
+
+    .project-item i {
+      font-size: 4rem;
+      background: #ffb347;
+      padding: 1rem;
+      border-radius: 50%;
+      color: #1e2f4e;
+      margin-bottom: 1rem;
+      border: 4px solid white;
+    }
+
+    .project-item h4 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .project-item p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* buddy team & personality */
+    .team-section {
+      padding: 4rem 2rem;
+      background: #fcf2e1;
+    }
+
+    .team-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .buddy-mentor {
+      background: #ffffff;
+      border-radius: 70px 20px 70px 20px;
+      padding: 1.5rem 2rem;
+      width: 300px;
+      border: 5px solid #ffa34d;
+      box-shadow: 0 20px 0 #ac8f70;
+    }
+
+    .buddy-mentor i {
+      font-size: 4rem;
+      background: #fee0b5;
+      padding: 1rem;
+      border-radius: 60% 40% 60% 40%;
+      margin-bottom: 0.5rem;
+    }
+
+    .kid-speech {
+      background: #fefcd6;
+      border-radius: 40px 40px 40px 10px;
+      padding: 1.8rem;
+      max-width: 350px;
+      border: 4px solid #afd0f0;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .kid-speech i {
+      color: #f28b1c;
+      margin-right: 0.6rem;
+    }
+
+    /* call to action */
+    .cta-banner {
+      background: #2d6192;
+      padding: 3.5rem 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-banner h2 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .cta-banner h2 i {
+      background: #ffbc6c;
+      color: #1e2f4e;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-style: normal;
+    }
+
+    .big-button {
+      background: #ffb041;
+      border: none;
+      color: #1e2f4e;
+      font-size: 2.4rem;
+      font-weight: 700;
+      padding: 1rem 3rem;
+      border-radius: 70px;
+      margin: 2rem 0 0;
+      border-bottom: 8px solid #b15d1a;
+      transition: 0.1s;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .big-button:hover {
+      background: #ffbe5c;
+      transform: translateY(-4px);
+      border-bottom-width: 10px;
+    }
+
+    /* footer */
+    .footer {
+      background: #1b3447;
+      color: #d8e9f5;
+      padding: 2rem 2rem 1rem;
+      text-align: center;
+      border-top: 12px solid #ffb96a;
+    }
+
+    .footer-icons i {
+      font-size: 2rem;
+      margin: 0 0.7rem;
+      color: #ffc489;
+    }
+
+    .footer small {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- navigation – super buddy style -->
+  <nav class="navbar">
+    <div class="logo-area">
+      <i class="fas fa-laptop-code logo-icon"></i>
+      <div class="logo-text">Code Buddy <span>10+</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#">learn</a>
+      <a href="#">play</a>
+      <a href="#">projects</a>
+      <a href="#">buddies</a>
+      <a href="#" class="btn-try"><i class="fas fa-rocket"></i> try free</a>
+    </div>
+  </nav>
+
+  <!-- hero – meet your code buddy -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Hey! I'm your <i>Code Buddy</i> 👋</h1>
+      <p>We build games, animations & crazy cool stuff – together. For kids 10+ (and the young at heart).</p>
+      <div class="buddy-badge">
+        <i class="fa-regular fa-star"></i> 100+ fun projects
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <i class="fas fa-robot"></i>   <!-- friendly robot buddy -->
+    </div>
+  </div>
+
+  <!-- features = how we buddy-code -->
+  <div class="features-section">
+    <h2 class="section-title"><span>⚡ code with a buddy ⚡</span></h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-puzzle-piece"></i></div>
+        <h3>blocks</h3>
+        <p>snap together logic – no tricky typing</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-dragon"></i></div>
+        <h3>characters</h3>
+        <p>code your own hero & silly monsters</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-globe"></i></div>
+        <h3>web games</h3>
+        <p>share with friends in one click</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-medal"></i></div>
+        <h3>badges</h3>
+        <p>earn rewards every new skill</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- project showcase (what buddies build) -->
+  <div class="showcase">
+    <h2 class="section-title" style="background-color: transparent;"><span>✨ made by buddies ✨</span></h2>
+    <div class="project-cards">
+      <div class="project-item">
+        <i class="fas fa-cat"></i>
+        <h4>Dino run</h4>
+        <p> + 3D obstacles</p>
+      </div>
+      <div class="project-item">
+        <i class="fas fa-music"></i>
+        <h4>Beat box</h4>
+        <p>drum with code</p>
+      </div>
+      <div class="project-item">
+        <i class="fas fa-pizza-slice"></i>
+        <h4>Pizza clicker</h4>
+        <p>200+ toppings</p>
+      </div>
+      <div class="project-item">
+        <i class="fas fa-ufo"></i>
+        <h4>Alien math</h4>
+        <p>save the galaxy</p>
+      </div>
+    </div>
+    <p style="font-size: 1.5rem; margin-top: 1.2rem; font-weight: 600;">➕ and tons more every week</p>
+  </div>
+
+  <!-- meet the buddy team (personality) -->
+  <div class="team-section">
+    <h2 class="section-title"><span>🧑‍💻 your buddy squad 👩‍💻</span></h2>
+    <div class="team-flex">
+      <div class="buddy-mentor">
+        <i class="fas fa-smile"></i>
+        <h3>Alex</h3>
+        <p>loves python & drawing robots</p>
+      </div>
+      <div class="buddy-mentor">
+        <i class="fas fa-heart"></i>
+        <h3>Jordan</h3>
+        <p>game design & mystery stories</p>
+      </div>
+      <div class="kid-speech">
+        <i class="fas fa-quote-left"></i> I made my own platformer in 2 hours! Code buddy is the best.
+        <br>— Mia, 11
+      </div>
+    </div>
+  </div>
+
+  <!-- big call to action  -->
+  <div class="cta-banner">
+    <h2><i>Start your coding journey</i> 🚀</h2>
+    <div class="big-button">
+      <i class="fa-regular fa-hand-peace"></i> become a buddy
+    </div>
+    <p style="font-size: 1.5rem; margin-top: 2rem; font-weight: 500;">✨ first two weeks ✨ <strong>totally free</strong> (no card needed)</p>
+  </div>
+
+  <!-- footer with buddy socials -->
+  <footer class="footer">
+    <div class="footer-icons">
+      <i class="fab fa-tiktok"></i>
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-discord"></i>
+    </div>
+    <p style="margin: 1.5rem 0 0.8rem;">© 2025 Code Buddy Enterprise – friendly coding for kids 10+</p>
+    <small>made with <i class="fa-regular fa-heart"></i> by buddies, for buddies</small>
+  </footer>
+
+  <!-- a little extra buddy spirit: floating icon (optional) but we keep it clean -->
+</body>
+</html>
